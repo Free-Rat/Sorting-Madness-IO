@@ -13,6 +13,6 @@ public class Main {
 
         int[] array = { 5, 4, 3, 2, 1 };
         // sorter.sort(array);
-        sorter.performSort(array);
+        sorter.getAlgorithm().sort(array);
     }
 }
