@@ -2,6 +2,8 @@ package org.sortingmadness;
 
 interface SortingAlgorithm {
     void sort(Integer[] array);
+    void sort(String array);
+    void sort(double[] array);
 }
 
 class BubbleSort implements SortingAlgorithm {
@@ -19,20 +21,20 @@ class BubbleSort implements SortingAlgorithm {
         }
     }
 
-/*    public void bubbleSort(String arr) {
+   public void sort(String arr) {
         int n = arr.length();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
                 if (arr.charAt(j) > arr.charAt(j + 1)) {
                     char temp = arr.charAt(j);
-                    arr.charAt(j) = arr.charAt(j + 1);
-                    arr.charAt(j + 1) = temp;
+                    //arr.charAt(j) = arr.charAt(j + 1);
+                    //arr.charAt(j + 1) = temp;
                 }
             }
         }
-    }*/
+    }
 
-    public void bubbleSort(double[] arr) {
+    public void sort(double[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {

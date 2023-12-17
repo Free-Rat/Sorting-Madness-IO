@@ -3,6 +3,10 @@ package org.sortingmadness;
 public class SortDataModel<T> {
     private T data;
 
+    public SortDataModel() {
+
+    }
+
     public SortDataModel(T data) {
         this.data = data;
     }
