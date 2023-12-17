@@ -1,12 +1,12 @@
 package org.sortingmadness;
 
 interface SortingAlgorithm {
-    void sort(int[] array);
+    void sort(Integer[] array);
 }
 
 class BubbleSort implements SortingAlgorithm {
 
-    public void sort(int[] arr) {
+    public void sort(Integer[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
@@ -19,7 +19,7 @@ class BubbleSort implements SortingAlgorithm {
         }
     }
 
-    public void bubbleSort(String arr) {
+/*    public void bubbleSort(String arr) {
         int n = arr.length();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
@@ -30,7 +30,7 @@ class BubbleSort implements SortingAlgorithm {
                 }
             }
         }
-    }
+    }*/
 
     public void bubbleSort(double[] arr) {
         int n = arr.length;
