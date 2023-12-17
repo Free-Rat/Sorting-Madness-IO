@@ -41,7 +41,7 @@ public class Sorter {
      * @param isAscending - kierunek sortowania
      */
     public void setSortingAlgorithmDirection(Boolean isAscending) {
-        this.algorithm.ascending = isAscending;
+        this.algorithm.setSortingAlgorithmDirection(isAscending);
     }
 
     /**
@@ -49,7 +49,7 @@ public class Sorter {
      * @param limit - limit sortowania
      */
     public void setSortingAlgorithmLimit(int limit) {
-        this.algorithm.limit = limit;
+        this.algorithm.setSortingAlgorithmLimit(limit);
     }
 }
 
@@ -59,11 +59,16 @@ public class Sorter {
 interface SortingAlgorithm {
 
     /**
-     * ascending - kierunek sortowania
-     * limit - limit sortowania
+     * Metoda setSortingAlgorithmDirection() ustawia kierunek sortowania
+     * @param isAscending - kierunek sortowania
      */
-    public Boolean ascending = true;
-    public int limit = 0;
+    void setSortingAlgorithmDirection(Boolean isAscending);
+
+    /**
+     * Metoda setSortingAlgorithmLimit() ustawia limit sortowania
+     * @param limit - limit sortowania
+     */
+    void setSortingAlgorithmLimit(int limit);
 
     /**
      * Metoda sort() sortuje tablicę int[]
@@ -89,6 +94,29 @@ interface SortingAlgorithm {
  * oraz sortuje tablice int[], char[] i double[] w zależności od kierunku sortowania
  */
 class BubbleSort implements SortingAlgorithm {
+
+    /**
+     * ascending - kierunek sortowania
+     * limit - limit sortowania
+     */
+    public Boolean ascending = true;
+    public int limit = 0;
+
+    /**
+     * Metoda setSortingAlgorithmDirection() ustawia kierunek sortowania
+     * @param isAscending - kierunek sortowania
+     */
+    public void setSortingAlgorithmDirection(Boolean isAscending) {
+        this.ascending = isAscending;
+    }
+
+    /**
+     * Metoda setSortingAlgorithmLimit() ustawia limit sortowania
+     * @param limit - limit sortowania
+     */
+    public void setSortingAlgorithmLimit(int limit) {
+        this.limit = limit;
+    }
 
     /**
      * Metoda sort() sortuje tablicę int[]
@@ -151,6 +179,28 @@ class BubbleSort implements SortingAlgorithm {
  */
 class QuickSort implements SortingAlgorithm {
 
+    /**
+     * ascending - kierunek sortowania
+     * limit - limit sortowania
+     */
+    public Boolean ascending = true;
+    public int limit = 0;
+
+    /**
+     * Metoda setSortingAlgorithmDirection() ustawia kierunek sortowania
+     * @param isAscending - kierunek sortowania
+     */
+    public void setSortingAlgorithmDirection(Boolean isAscending) {
+        this.ascending = isAscending;
+    }
+
+    /**
+     * Metoda setSortingAlgorithmLimit() ustawia limit sortowania
+     * @param limit - limit sortowania
+     */
+    public void setSortingAlgorithmLimit(int limit) {
+        this.limit = limit;
+    }
     /**
      * recursiveDepth - głębokość rekurencji
      */
@@ -310,6 +360,29 @@ class QuickSort implements SortingAlgorithm {
  * oraz sortuje tablice int[], char[] i double[] w zależności od kierunku sortowania
  */
 class MergeSort implements SortingAlgorithm {
+
+    /**
+     * ascending - kierunek sortowania
+     * limit - limit sortowania
+     */
+    public Boolean ascending = true;
+    public int limit = 0;
+
+    /**
+     * Metoda setSortingAlgorithmDirection() ustawia kierunek sortowania
+     * @param isAscending - kierunek sortowania
+     */
+    public void setSortingAlgorithmDirection(Boolean isAscending) {
+        this.ascending = isAscending;
+    }
+
+    /**
+     * Metoda setSortingAlgorithmLimit() ustawia limit sortowania
+     * @param limit - limit sortowania
+     */
+    public void setSortingAlgorithmLimit(int limit) {
+        this.limit = limit;
+    }
 
     /**
      * recursiveDepth - głębokość rekurencji
