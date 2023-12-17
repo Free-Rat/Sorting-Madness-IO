@@ -5,7 +5,6 @@ interface SortingAlgorithm {
     void sort(String array);
     void sort(double[] array);
 }
-
 class BubbleSort implements SortingAlgorithm {
 
     public void sort(Integer[] arr) {
@@ -27,8 +26,10 @@ class BubbleSort implements SortingAlgorithm {
             for (int j = 0; j < n - i - 1; j++) {
                 if (arr.charAt(j) > arr.charAt(j + 1)) {
                     char temp = arr.charAt(j);
-                    //arr.charAt(j) = arr.charAt(j + 1);
-                    //arr.charAt(j + 1) = temp;
+                    // sort by ASCII code
+                    arr.replace(arr.charAt(j), arr.charAt(j + 1));
+                    arr.replace(arr.charAt(j + 1), temp);
+
                 }
             }
         }
