@@ -22,6 +22,7 @@ public class SortDataController {
         Sorter sorter = new Sorter();
         sorter.setSortingAlgorithmDirection(!dataModel.IsDescending());
         sorter.setSortingStrategy(sortType);
+        sorter.setSortingAlgorithmLimit(dataModel.getIterations());
         sorter.getAlgorithm().sort(data);
         dataModel.setData(data);
         return dataModel;
@@ -40,6 +41,7 @@ public class SortDataController {
         Sorter sorter = new Sorter();
         sorter.setSortingAlgorithmDirection(!dataModel.IsDescending());
         sorter.setSortingStrategy(sortType);
+        sorter.setSortingAlgorithmLimit(dataModel.getIterations());
         sorter.getAlgorithm().sort(data);
         dataModel.setData(data);
         return dataModel;
@@ -57,6 +59,7 @@ public class SortDataController {
         Sorter sorter = new Sorter();
         sorter.setSortingAlgorithmDirection(!dataModel.IsDescending());
         sorter.setSortingStrategy(sortType);
+        sorter.setSortingAlgorithmLimit(dataModel.getIterations());
         sorter.getAlgorithm().sort(data);
         dataModel.setData(Arrays.toString(data));
         return dataModel;
