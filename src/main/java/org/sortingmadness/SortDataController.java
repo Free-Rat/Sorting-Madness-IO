@@ -16,8 +16,8 @@ public class SortDataController {
      * @throws Exception ("Nieznany typ sortowania")
      */
     @PostMapping("/sort_int") // handle Integer sorting POST request
-    public SortDataModel<Integer[]> sortIntData(@RequestBody SortDataModel<Integer[]> dataModel) throws Exception {
-        Integer[] data = dataModel.getData();
+    public SortDataModel<int[]> sortIntData(@RequestBody SortDataModel<int[]> dataModel) throws Exception {
+        int[] data = dataModel.getData();
         var sortType = this.GetSortType(dataModel.getSortType());
         Sorter sorter = new Sorter();
         sorter.setSortingStrategy(sortType);
@@ -50,12 +50,12 @@ public class SortDataController {
      */
     @PostMapping("/sort_string") // handle String sorting POST request
     public SortDataModel<String> sortStringData(@RequestBody SortDataModel<String> dataModel) throws Exception {
-        String data = dataModel.getData();
+        char[] data = dataModel.getData().toCharArray();
         var sortType = this.GetSortType(dataModel.getSortType());
         Sorter sorter = new Sorter();
         sorter.setSortingStrategy(sortType);
         sorter.getAlgorithm().sort(data);
-        dataModel.setData(data);
+        dataModel.setData(Arrays.toString(data));
         return dataModel;
     }
     /**

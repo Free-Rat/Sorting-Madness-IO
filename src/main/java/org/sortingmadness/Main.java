@@ -17,8 +17,7 @@ public class Main {
         Sorter sorter = new Sorter();
         sorter.setSortingStrategy(SortingStrategyEnum.BUBBLE_SORT);
 
-        Integer[] array = { 5, 4, 3, 2, 1 };
-        // sorter.sort(array);
+        int[] array = { 5, 4, 3, 2, 1 };
         sorter.getAlgorithm().sort(array);
     }
 }
