@@ -1,9 +1,16 @@
 package org.sortingmadness;
 
-// Klasa Sorter jest odpowiedzialna za wybór algorytmu sortowania, jego kierunku oraz limitu
+/**
+ * Klasa Sorter jest odpowiedzialna za wybór algorytmu sortowania, jego kierunku oraz limitu
+ * @param algorithm - algorytm sortowania
+ */
 public class Sorter {
     private SortingAlgorithm algorithm;
 
+    /**
+     * Metoda setSortingStrategy() ustawia algorytm sortowania
+     * @param strat - strategia sortowania
+     */
     public void setSortingStrategy(SortingStrategyEnum strat) {
         switch (strat) { 
             case BUBBLE_SORT: 
@@ -18,34 +25,69 @@ public class Sorter {
         }
     }
 
+    /**
+     * Metoda getAlgorithm() zwraca obiekt algorytmu sortowania
+     * @return SortingAlgorithm
+     */
     public SortingAlgorithm getAlgorithm() {
         return this.algorithm;
     }
 
+    /**
+     * Metoda setSortingAlgorithmDirection() ustawia kierunek sortowania
+     * @param isAscending - kierunek sortowania
+     */
     public void setSortingAlgorithmDirection(Boolean isAscending) {
         this.algorithm.ascending = isAscending;
     }
 
+    /**
+     * Metoda setSortingAlgorithmLimit() ustawia limit sortowania
+     * @param limit - limit sortowania
+     */
     public void setSortingAlgorithmLimit(int limit) {
         this.algorithm.limit = limit;
     }
 }
 
-// interfejs SortingAlgorithm jest wspólny dla wszystkich algorytmów sortowania
+/**
+ * Interfejs SortingAlgorithm jest wspólny dla wszystkich algorytmów sortowania
+ * @param ascending - kierunek sortowania
+ * @param limit - limit sortowania
+ */
 interface SortingAlgorithm {
     public Boolean ascending = true;
     public int limit = 0;
+
+    /**
+     * Metoda sort() sortuje tablicę int[]
+     * @param array - tablica int[]
+     */
     void sort(int[] array);
+
+    /**
+     * Metoda sort() sortuje tablicę char[]
+     * @param array - tablica char[]
+     */
     void sort(char[] array);
+
+    /**
+     * Metoda sort() sortuje tablicę double[]
+     * @param array - tablica double[]
+     */
     void sort(double[] array);
 }
 
-// klasy BubbleSort, QuickSort i MergeSort implementują interfejs setSortingAlgorithmLimit
-// oraz sortują tablice int[], char[] i double[] w zależności od kierunku sortowania
-//
-// BubbleSort - sortowanie bąbelkowe
+/**
+ * Klasa BubbleSort implementuje interfejs setSortingAlgorithmLimit
+ * oraz sortuje tablice int[], char[] i double[] w zależności od kierunku sortowania
+ */
 class BubbleSort implements SortingAlgorithm {
 
+    /**
+     * Metoda sort() sortuje tablicę int[]
+     * @param arr - tablica int[]
+     */
     public void sort(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
@@ -60,6 +102,10 @@ class BubbleSort implements SortingAlgorithm {
         }
     }
 
+    /**
+     * Metoda sort() sortuje tablicę char[]
+     * @param arr - tablica char[]
+     */
     public void sort(char[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
@@ -74,6 +120,10 @@ class BubbleSort implements SortingAlgorithm {
         }
     }
 
+    /**
+     * Metoda sort() sortuje tablicę double[]
+     * @param arr - tablica double[]
+     */
     public void sort(double[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
@@ -89,17 +139,30 @@ class BubbleSort implements SortingAlgorithm {
     }
 }
 
-// QuickSort - sortowanie szybkie
+/**
+ * Klasa QuickSort implementuje interfejs SortingAlgorithm
+ * oraz sortuje tablice int[], char[] i double[] w zależności od kierunku sortowania
+ * @param recursiveDepth - głębokość rekurencji
+ */
 class QuickSort implements SortingAlgorithm {
 
     private int recursiveDepth = 0;
 
+    /**
+     * Metoda sort() odpowiada za wywołanie funkcji quickSort()
+     * @param arr - tablica int[]
+     */
     public void sort(int[] arr) {
         quickSort(arr, 0, arr.length - 1);
     }
 
-    // quickSort() odpowiada za rekurencyjne wywołanie sortowania szybkiego
-    // oraz za wywołanie funkcji partition(), która dzieli tablicę na dwie części
+    /**
+     * Metoda quickSort() odpowiada za rekurencyjne wywołanie sortowania szybkiego
+     * oraz za wywołanie funkcji partition(), która dzieli tablicę na dwie części
+     * @param arr - tablica int[]
+     * @param low - indeks pierwszego elementu
+     * @param high - indeks ostatniego elementu
+     */
     private void quickSort(int[] arr, int low, int high) {
         if (limit != 0 && recursiveDepth == limit) return;
         recursiveDepth++;
@@ -110,7 +173,13 @@ class QuickSort implements SortingAlgorithm {
         }
     }
 
-    // partition() dzieli tablicę na dwie części, zwraca indeks elementu pivot
+    /**
+     * Metoda partition() dzieli tablicę na dwie części, zwraca indeks elementu pivot
+     * @param arr - tablica int[]
+     * @param low - indeks pierwszego elementu
+     * @param high - indeks ostatniego elementu
+     * @return int
+     */
     private int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
         int i = low - 1;
@@ -129,10 +198,21 @@ class QuickSort implements SortingAlgorithm {
     }
 
 
+    /**
+     * Metoda sort() odpowiada za wywołanie funkcji quickSort()
+     * @param arr - tablica char[]
+     */
     public void sort(char[] arr) {
         quickSort(arr, 0, arr.length - 1);
     }
 
+    /**
+     * Metoda quickSort() odpowiada za rekurencyjne wywołanie sortowania szybkiego
+     * oraz za wywołanie funkcji partition(), która dzieli tablicę na dwie części
+     * @param arr - tablica char[]
+     * @param low - indeks pierwszego elementu
+     * @param high - indeks ostatniego elementu
+     */
     private void quickSort(char[] arr, int low, int high) {
         if (limit != 0 && recursiveDepth == limit) return;
         recursiveDepth++;
@@ -143,6 +223,13 @@ class QuickSort implements SortingAlgorithm {
         }
     }
 
+    /**
+     * Metoda partition() dzieli tablicę na dwie części, zwraca indeks elementu pivot
+     * @param arr - tablica char[]
+     * @param low - indeks pierwszego elementu
+     * @param high - indeks ostatniego elementu
+     * @return int
+     */
     private int partition(char[] arr, int low, int high) {
         char pivot = arr[high];
         int i = low - 1;
@@ -160,10 +247,21 @@ class QuickSort implements SortingAlgorithm {
         return i + 1;
     }
 
+    /**
+     * Metoda sort() odpowiada za wywołanie funkcji quickSort()
+     * @param arr - tablica double[]
+     */
     public void sort(double[] arr) {
         quickSort(arr, 0, arr.length - 1);
     }
 
+    /**
+     * Metoda quickSort() odpowiada za rekurencyjne wywołanie sortowania szybkiego
+     * oraz za wywołanie funkcji partition(), która dzieli tablicę na dwie części
+     * @param arr - tablica double[]
+     * @param low - indeks pierwszego elementu
+     * @param high - indeks ostatniego elementu
+     */
     private void quickSort(double[] arr, int low, int high) {
         if (limit != 0 && recursiveDepth == limit) return;
         recursiveDepth++;
@@ -174,6 +272,13 @@ class QuickSort implements SortingAlgorithm {
         }
     }
 
+    /**
+     * Metoda partition() dzieli tablicę na dwie części, zwraca indeks elementu pivot
+     * @param arr - tablica double[]
+     * @param low - indeks pierwszego elementu
+     * @param high - indeks ostatniego elementu
+     * @return int
+     */
     private int partition(double[] arr, int low, int high) {
         double pivot = arr[high];
         int i = low - 1;
@@ -192,16 +297,29 @@ class QuickSort implements SortingAlgorithm {
     }
 }
 
-// MergeSort - sortowanie przez scalanie
+/**
+ * Klasa MergeSort implementuje interfejs SortingAlgorithm
+ * oraz sortuje tablice int[], char[] i double[] w zależności od kierunku sortowania
+ * @param recursiveDepth - głębokość rekurencji
+ */
 class MergeSort implements SortingAlgorithm {
 
     private int recursiveDepth = 0;
 
+    /**
+     * Metoda sort() odpowiada za wywołanie funkcji mergeSort()
+     * @param arr - tablica int[]
+     */
     public void sort(int[] arr) {
         mergeSort(arr, 0, arr.length - 1);
     }
 
-    // mergeSort() odpowiada za rekurencyjne wywołanie sortowania przez scalanie
+    /**
+     * Metoda mergeSort() odpowiada za rekurencyjne wywołanie sortowania przez scalanie
+     * @param arr - tablica int[]
+     * @param left - indeks pierwszego elementu
+     * @param right - indeks ostatniego elementu
+     */
     private void mergeSort(int[] arr, int left, int right) {
         if (limit != 0 && recursiveDepth == limit) return;
         recursiveDepth++;
@@ -213,7 +331,13 @@ class MergeSort implements SortingAlgorithm {
         }
     }
 
-    // merge() scalanie dwóch podtablic
+    /**
+     * Metoda merge() scala dwie podtablice
+     * @param arr - tablica int[]
+     * @param left - indeks pierwszego elementu
+     * @param mid - indeks środkowego elementu
+     * @param right - indeks ostatniego elementu
+     */
     private void merge(int[] arr, int left, int mid, int right) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
@@ -254,10 +378,20 @@ class MergeSort implements SortingAlgorithm {
         }
     }
 
+    /**
+     * Metoda sort() odpowiada za wywołanie funkcji mergeSort()
+     * @param arr - tablica double[]
+     */
     public void sort(double[] arr) {
         mergeSort(arr, 0, arr.length - 1);
     }
 
+    /**
+     * Metoda mergeSort() odpowiada za rekurencyjne wywołanie sortowania przez scalanie
+     * @param arr - tablica double[]
+     * @param left - indeks pierwszego elementu
+     * @param right - indeks ostatniego elementu
+     */
     private void mergeSort(double[] arr, int left, int right) {
         if (limit != 0 && recursiveDepth == limit) return;
         recursiveDepth++;
@@ -269,6 +403,13 @@ class MergeSort implements SortingAlgorithm {
         }
     }
 
+    /**
+     * Metoda merge() scala dwie podtablice
+     * @param arr - tablica double[]
+     * @param left - indeks pierwszego elementu
+     * @param mid - indeks środkowego elementu
+     * @param right - indeks ostatniego elementu
+     */
     private void merge(double[] arr, int left, int mid, int right) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
@@ -309,10 +450,20 @@ class MergeSort implements SortingAlgorithm {
         }
     }
 
+    /**
+     * Metoda sort() odpowiada za wywołanie funkcji mergeSort()
+     * @param arr - tablica char[]
+     */
     public void sort(char[] arr) {
         mergeSort(arr, 0, arr.length - 1);
     }
 
+    /**
+     * Metoda mergeSort() odpowiada za rekurencyjne wywołanie sortowania przez scalanie
+     * @param arr - tablica char[]
+     * @param left - indeks pierwszego elementu
+     * @param right - indeks ostatniego elementu
+     */
     private void mergeSort(char[] arr, int left, int right) {
         if (limit != 0 && recursiveDepth == limit) return;
         recursiveDepth++;
@@ -324,6 +475,13 @@ class MergeSort implements SortingAlgorithm {
         }
     }
 
+    /**
+     * Metoda merge() scala dwie podtablice
+     * @param arr - tablica char[]
+     * @param left - indeks pierwszego elementu
+     * @param mid - indeks środkowego elementu
+     * @param right - indeks ostatniego elementu
+     */
     private void merge(char[] arr, int left, int mid, int right) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
