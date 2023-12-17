@@ -3,15 +3,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
-
-@RestController
 /**
  * Klasa obsługująca żądania POST sortowania danych
  */
+@RestController
+
 public class SortDataController {
     /**
      * Obsługa żądania POST sortowania danych (int)
-     * @param dataModel
+     * @param dataModel model danych
      * @return posortowane dataModel (int)
      * @throws Exception ("Nieznany typ sortowania")
      */
@@ -36,7 +36,7 @@ public class SortDataController {
 
     /**
      * Obsługa żądania POST sortowania danych (double)
-     * @param dataModel
+     * @param dataModel model danych
      * @return posoto dataModel (double)
      * @throws Exception ("Nieznany typ sortowania")
      */
@@ -60,7 +60,7 @@ public class SortDataController {
     }
     /**
      * Obsługa żądania POST sortowania danych (String)
-     * @param dataModel
+     * @param dataModel model danych
      * @return posortowane dataModel (String)
      * @throws Exception ("Nieznany typ sortowania")
      */
@@ -84,7 +84,7 @@ public class SortDataController {
     }
     /**
      * Determinuje typ sortowania
-     * @param sortType
+     * @param sortType typ sortowania
      * @return typ sortowania
      * @throws Exception ("Nieznany typ sortowania")
      */
