@@ -20,9 +20,14 @@ public class Sorter {
     public SortingAlgorithm getAlgorithm() {
         return this.algorithm;
     }
+
+    public void setSortingAlgorithmDirection(Boolean isAscending) {
+        this.algorithm.ascending = isAscending;
+    }
 }
 
 interface SortingAlgorithm {
+    public Boolean ascending = true;
     void sort(int[] array);
     void sort(char[] array);
     void sort(double[] array);
@@ -34,9 +39,9 @@ class BubbleSort implements SortingAlgorithm {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
+                if (ascending ? arr[j] > arr[j + 1] : arr[j] < arr[j + 1]) {
                     int temp = arr[j];
-                    arr[j] = arr[j + 1];
+                    arr[j] = arr[j + 1]; 
                     arr[j + 1] = temp;
                 }
             }
@@ -47,9 +52,9 @@ class BubbleSort implements SortingAlgorithm {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
+                if (ascending ? arr[j] > arr[j + 1] : arr[j] < arr[j + 1]) {
                     char temp = arr[j];
-                    arr[j] = arr[j + 1];
+                    arr[j] = arr[j + 1]; 
                     arr[j + 1] = temp;
                 }
             }
@@ -60,7 +65,7 @@ class BubbleSort implements SortingAlgorithm {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
+                if (ascending ? arr[j] > arr[j + 1] : arr[j] < arr[j + 1]) {
                     double temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
@@ -88,7 +93,7 @@ class QuickSort implements SortingAlgorithm {
         int pivot = arr[high];
         int i = low - 1;
         for (int j = low; j < high; j++) {
-            if (arr[j] < pivot) {
+            if (ascending ? arr[j] < pivot : arr[j] > pivot) {
                 i++;
                 int temp = arr[i];
                 arr[i] = arr[j];
@@ -118,7 +123,7 @@ class QuickSort implements SortingAlgorithm {
         char pivot = arr[high];
         int i = low - 1;
         for (int j = low; j < high; j++) {
-            if (arr[j] < pivot) {
+            if (ascending ? arr[j] < pivot : arr[j] > pivot) {
                 i++;
                 char temp = arr[i];
                 arr[i] = arr[j];
@@ -147,7 +152,7 @@ class QuickSort implements SortingAlgorithm {
         double pivot = arr[high];
         int i = low - 1;
         for (int j = low; j < high; j++) {
-            if (arr[j] < pivot) {
+            if (ascending ? arr[j] < pivot : arr[j] > pivot) {
                 i++;
                 double temp = arr[i];
                 arr[i] = arr[j];
@@ -170,7 +175,7 @@ class MergeSort implements SortingAlgorithm {
     }
 
     private void mergeSort(int[] arr, int left, int right) {
-        if (left < right) {
+        if (ascending ? left < right : left > right) {
             int mid = (left + right) / 2;
             mergeSort(arr, left, mid);
             mergeSort(arr, mid + 1, right);
@@ -223,7 +228,7 @@ class MergeSort implements SortingAlgorithm {
     }
 
     private void mergeSort(double[] arr, int left, int right) {
-        if (left < right) {
+        if (ascending ? left < right : left > right) {
             int mid = (left + right) / 2;
             mergeSort(arr, left, mid);
             mergeSort(arr, mid + 1, right);
@@ -276,7 +281,7 @@ class MergeSort implements SortingAlgorithm {
     }
 
     private void mergeSort(char[] arr, int left, int right) {
-        if (left < right) {
+        if (ascending ? left < right : left > right) {
             int mid = (left + right) / 2;
             mergeSort(arr, left, mid);
             mergeSort(arr, mid + 1, right);
