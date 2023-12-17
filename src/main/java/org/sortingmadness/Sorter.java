@@ -27,8 +27,10 @@ class BubbleSort implements SortingAlgorithm {
             for (int j = 0; j < n - i - 1; j++) {
                 if (arr.charAt(j) > arr.charAt(j + 1)) {
                     char temp = arr.charAt(j);
-                    //arr.charAt(j) = arr.charAt(j + 1);
-                    //arr.charAt(j + 1) = temp;
+                    // sort by ASCII code
+                    arr.replace(arr.charAt(j), arr.charAt(j + 1));
+                    arr.replace(arr.charAt(j + 1), temp);
+
                 }
             }
         }
