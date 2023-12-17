@@ -1,5 +1,6 @@
 package org.sortingmadness;
 
+// Klasa Sorter jest odpowiedzialna za wybór algorytmu sortowania, jego kierunku oraz limitu
 public class Sorter {
     private SortingAlgorithm algorithm;
 
@@ -30,6 +31,7 @@ public class Sorter {
     }
 }
 
+// interfejs SortingAlgorithm jest wspólny dla wszystkich algorytmów sortowania
 interface SortingAlgorithm {
     public Boolean ascending = true;
     public int limit = 0;
@@ -38,6 +40,10 @@ interface SortingAlgorithm {
     void sort(double[] array);
 }
 
+// klasy BubbleSort, QuickSort i MergeSort implementują interfejs setSortingAlgorithmLimit
+// oraz sortują tablice int[], char[] i double[] w zależności od kierunku sortowania
+//
+// BubbleSort - sortowanie bąbelkowe
 class BubbleSort implements SortingAlgorithm {
 
     public void sort(int[] arr) {
@@ -83,6 +89,7 @@ class BubbleSort implements SortingAlgorithm {
     }
 }
 
+// QuickSort - sortowanie szybkie
 class QuickSort implements SortingAlgorithm {
 
     private int recursiveDepth = 0;
@@ -91,6 +98,8 @@ class QuickSort implements SortingAlgorithm {
         quickSort(arr, 0, arr.length - 1);
     }
 
+    // quickSort() odpowiada za rekurencyjne wywołanie sortowania szybkiego
+    // oraz za wywołanie funkcji partition(), która dzieli tablicę na dwie części
     private void quickSort(int[] arr, int low, int high) {
         if (limit != 0 && recursiveDepth == limit) return;
         recursiveDepth++;
@@ -101,6 +110,7 @@ class QuickSort implements SortingAlgorithm {
         }
     }
 
+    // partition() dzieli tablicę na dwie części, zwraca indeks elementu pivot
     private int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
         int i = low - 1;
@@ -182,16 +192,16 @@ class QuickSort implements SortingAlgorithm {
     }
 }
 
-
+// MergeSort - sortowanie przez scalanie
 class MergeSort implements SortingAlgorithm {
 
     private int recursiveDepth = 0;
 
-    @Override
     public void sort(int[] arr) {
         mergeSort(arr, 0, arr.length - 1);
     }
 
+    // mergeSort() odpowiada za rekurencyjne wywołanie sortowania przez scalanie
     private void mergeSort(int[] arr, int left, int right) {
         if (limit != 0 && recursiveDepth == limit) return;
         recursiveDepth++;
@@ -203,6 +213,7 @@ class MergeSort implements SortingAlgorithm {
         }
     }
 
+    // merge() scalanie dwóch podtablic
     private void merge(int[] arr, int left, int mid, int right) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
