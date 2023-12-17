@@ -20,11 +20,17 @@ public class SortDataController {
         int[] data = dataModel.getData();
         var sortType = this.GetSortType(dataModel.getSortType());
         Sorter sorter = new Sorter();
-        sorter.setSortingAlgorithmDirection(!dataModel.IsDescending());
         sorter.setSortingStrategy(sortType);
+        sorter.setSortingAlgorithmDirection(!dataModel.IsDescending());
         sorter.setSortingAlgorithmLimit(dataModel.getIterations());
+
+        long start = System.currentTimeMillis();
         sorter.getAlgorithm().sort(data);
+        long finish = System.currentTimeMillis();
+        long timeElapsed = finish - start;
+
         dataModel.setData(data);
+        dataModel.setIterations((int)timeElapsed);
         return dataModel;
     }
 
@@ -39,11 +45,17 @@ public class SortDataController {
         double[] data = dataModel.getData();
         var sortType = this.GetSortType(dataModel.getSortType());
         Sorter sorter = new Sorter();
-        sorter.setSortingAlgorithmDirection(!dataModel.IsDescending());
         sorter.setSortingStrategy(sortType);
+        sorter.setSortingAlgorithmDirection(!dataModel.IsDescending());
         sorter.setSortingAlgorithmLimit(dataModel.getIterations());
+
+        long start = System.currentTimeMillis();
         sorter.getAlgorithm().sort(data);
+        long finish = System.currentTimeMillis();
+        long timeElapsed = finish - start;
+
         dataModel.setData(data);
+        dataModel.setIterations((int)timeElapsed);
         return dataModel;
     }
     /**
@@ -57,11 +69,17 @@ public class SortDataController {
         char[] data = dataModel.getData().toCharArray();
         var sortType = this.GetSortType(dataModel.getSortType());
         Sorter sorter = new Sorter();
-        sorter.setSortingAlgorithmDirection(!dataModel.IsDescending());
         sorter.setSortingStrategy(sortType);
+        sorter.setSortingAlgorithmDirection(!dataModel.IsDescending());
         sorter.setSortingAlgorithmLimit(dataModel.getIterations());
+
+        long start = System.currentTimeMillis();
         sorter.getAlgorithm().sort(data);
+        long finish = System.currentTimeMillis();
+        long timeElapsed = finish - start;
+
         dataModel.setData(Arrays.toString(data));
+        dataModel.setIterations((int)timeElapsed);
         return dataModel;
     }
     /**
