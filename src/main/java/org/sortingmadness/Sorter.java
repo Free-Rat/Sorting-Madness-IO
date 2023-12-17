@@ -97,9 +97,12 @@ class BubbleSort implements SortingAlgorithm {
 
     /**
      * ascending - kierunek sortowania
-     * limit - limit sortowania
      */
     public Boolean ascending = true;
+
+    /**
+     * limit - limit sortowania
+     */
     public int limit = 0;
 
     /**
@@ -181,9 +184,12 @@ class QuickSort implements SortingAlgorithm {
 
     /**
      * ascending - kierunek sortowania
-     * limit - limit sortowania
      */
     public Boolean ascending = true;
+
+    /**
+     * limit - limit sortowania
+     */
     public int limit = 0;
 
     /**
@@ -363,9 +369,12 @@ class MergeSort implements SortingAlgorithm {
 
     /**
      * ascending - kierunek sortowania
-     * limit - limit sortowania
      */
     public Boolean ascending = true;
+
+    /**
+     * limit - limit sortowania
+     */
     public int limit = 0;
 
     /**
