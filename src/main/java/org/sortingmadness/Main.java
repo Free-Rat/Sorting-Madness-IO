@@ -9,6 +9,10 @@ public class Main {
         }
 
         Sorter sorter = new Sorter();
+        sorter.setSortingStrategy(SortingStrategyEnum.BUBBLE_SORT);
 
+        int[] array = { 5, 4, 3, 2, 1 };
+        // sorter.sort(array);
+        sorter.performSort(array);
     }
 }
