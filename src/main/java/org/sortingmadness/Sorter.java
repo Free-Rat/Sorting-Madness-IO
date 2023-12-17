@@ -24,10 +24,15 @@ public class Sorter {
     public void setSortingAlgorithmDirection(Boolean isAscending) {
         this.algorithm.ascending = isAscending;
     }
+
+    public void setSortingAlgorithmLimit(int limit) {
+        this.algorithm.limit = limit;
+    }
 }
 
 interface SortingAlgorithm {
     public Boolean ascending = true;
+    public int limit = 0;
     void sort(int[] array);
     void sort(char[] array);
     void sort(double[] array);
@@ -45,6 +50,7 @@ class BubbleSort implements SortingAlgorithm {
                     arr[j + 1] = temp;
                 }
             }
+            if (limit != 0 && i == limit - 1) break;
         }
     }
 
@@ -58,6 +64,7 @@ class BubbleSort implements SortingAlgorithm {
                     arr[j + 1] = temp;
                 }
             }
+            if (limit != 0 && i == limit - 1) break;
         }
     }
 
@@ -71,17 +78,22 @@ class BubbleSort implements SortingAlgorithm {
                     arr[j + 1] = temp;
                 }
             }
+            if (limit != 0 && i == limit - 1) break;
         }
     }
 }
 
 class QuickSort implements SortingAlgorithm {
 
+    private int recursiveDepth = 0;
+
     public void sort(int[] arr) {
         quickSort(arr, 0, arr.length - 1);
     }
 
     private void quickSort(int[] arr, int low, int high) {
+        if (limit != 0 && recursiveDepth == limit) return;
+        recursiveDepth++;
         if (low < high) {
             int partitionIndex = partition(arr, low, high);
             quickSort(arr, low, partitionIndex - 1);
@@ -112,6 +124,8 @@ class QuickSort implements SortingAlgorithm {
     }
 
     private void quickSort(char[] arr, int low, int high) {
+        if (limit != 0 && recursiveDepth == limit) return;
+        recursiveDepth++;
         if (low < high) {
             int partitionIndex = partition(arr, low, high);
             quickSort(arr, low, partitionIndex - 1);
@@ -141,6 +155,8 @@ class QuickSort implements SortingAlgorithm {
     }
 
     private void quickSort(double[] arr, int low, int high) {
+        if (limit != 0 && recursiveDepth == limit) return;
+        recursiveDepth++;
         if (low < high) {
             int partitionIndex = partition(arr, low, high);
             quickSort(arr, low, partitionIndex - 1);
@@ -169,12 +185,16 @@ class QuickSort implements SortingAlgorithm {
 
 class MergeSort implements SortingAlgorithm {
 
+    private int recursiveDepth = 0;
+
     @Override
     public void sort(int[] arr) {
         mergeSort(arr, 0, arr.length - 1);
     }
 
     private void mergeSort(int[] arr, int left, int right) {
+        if (limit != 0 && recursiveDepth == limit) return;
+        recursiveDepth++;
         if (ascending ? left < right : left > right) {
             int mid = (left + right) / 2;
             mergeSort(arr, left, mid);
@@ -228,6 +248,8 @@ class MergeSort implements SortingAlgorithm {
     }
 
     private void mergeSort(double[] arr, int left, int right) {
+        if (limit != 0 && recursiveDepth == limit) return;
+        recursiveDepth++;
         if (ascending ? left < right : left > right) {
             int mid = (left + right) / 2;
             mergeSort(arr, left, mid);
@@ -281,6 +303,8 @@ class MergeSort implements SortingAlgorithm {
     }
 
     private void mergeSort(char[] arr, int left, int right) {
+        if (limit != 0 && recursiveDepth == limit) return;
+        recursiveDepth++;
         if (ascending ? left < right : left > right) {
             int mid = (left + right) / 2;
             mergeSort(arr, left, mid);
