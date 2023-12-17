@@ -5,7 +5,6 @@ interface SortingAlgorithm {
     void sort(String array);
     void sort(double[] array);
 }
-
 class BubbleSort implements SortingAlgorithm {
 
     public void sort(Integer[] arr) {
