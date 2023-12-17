@@ -20,6 +20,7 @@ public class SortDataController {
         int[] data = dataModel.getData();
         var sortType = this.GetSortType(dataModel.getSortType());
         Sorter sorter = new Sorter();
+        sorter.setSortingAlgorithmDirection(!dataModel.IsDescending());
         sorter.setSortingStrategy(sortType);
         sorter.getAlgorithm().sort(data);
         dataModel.setData(data);
@@ -37,6 +38,7 @@ public class SortDataController {
         double[] data = dataModel.getData();
         var sortType = this.GetSortType(dataModel.getSortType());
         Sorter sorter = new Sorter();
+        sorter.setSortingAlgorithmDirection(!dataModel.IsDescending());
         sorter.setSortingStrategy(sortType);
         sorter.getAlgorithm().sort(data);
         dataModel.setData(data);
@@ -53,6 +55,7 @@ public class SortDataController {
         char[] data = dataModel.getData().toCharArray();
         var sortType = this.GetSortType(dataModel.getSortType());
         Sorter sorter = new Sorter();
+        sorter.setSortingAlgorithmDirection(!dataModel.IsDescending());
         sorter.setSortingStrategy(sortType);
         sorter.getAlgorithm().sort(data);
         dataModel.setData(Arrays.toString(data));
