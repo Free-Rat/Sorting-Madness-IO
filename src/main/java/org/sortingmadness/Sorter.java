@@ -2,9 +2,12 @@ package org.sortingmadness;
 
 /**
  * Klasa Sorter jest odpowiedzialna za wybór algorytmu sortowania, jego kierunku oraz limitu
- * @param algorithm - algorytm sortowania
  */
 public class Sorter {
+
+    /**
+     * algorytm sortowania
+     */
     private SortingAlgorithm algorithm;
 
     /**
@@ -52,10 +55,13 @@ public class Sorter {
 
 /**
  * Interfejs SortingAlgorithm jest wspólny dla wszystkich algorytmów sortowania
- * @param ascending - kierunek sortowania
- * @param limit - limit sortowania
  */
 interface SortingAlgorithm {
+
+    /**
+     * ascending - kierunek sortowania
+     * limit - limit sortowania
+     */
     public Boolean ascending = true;
     public int limit = 0;
 
@@ -142,10 +148,12 @@ class BubbleSort implements SortingAlgorithm {
 /**
  * Klasa QuickSort implementuje interfejs SortingAlgorithm
  * oraz sortuje tablice int[], char[] i double[] w zależności od kierunku sortowania
- * @param recursiveDepth - głębokość rekurencji
  */
 class QuickSort implements SortingAlgorithm {
 
+    /**
+     * recursiveDepth - głębokość rekurencji
+     */
     private int recursiveDepth = 0;
 
     /**
@@ -300,10 +308,12 @@ class QuickSort implements SortingAlgorithm {
 /**
  * Klasa MergeSort implementuje interfejs SortingAlgorithm
  * oraz sortuje tablice int[], char[] i double[] w zależności od kierunku sortowania
- * @param recursiveDepth - głębokość rekurencji
  */
 class MergeSort implements SortingAlgorithm {
 
+    /**
+     * recursiveDepth - głębokość rekurencji
+     */
     private int recursiveDepth = 0;
 
     /**
