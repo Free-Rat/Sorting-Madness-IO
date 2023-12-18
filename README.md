@@ -1,4 +1,4 @@
-# Backend serwera napisany w C++ instrukcja kompilacji
+# Sorting-Madness-IO
 Żeby skorzystać z REST API należy wysłać zapytanie POST do serwera pod adresem:
 - /sort_int
 - /sort_double
