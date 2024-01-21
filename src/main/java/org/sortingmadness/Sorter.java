@@ -403,70 +403,60 @@ class MergeSort implements SortingAlgorithm {
      * @param arr - tablica int[]
      */
     public void sort(int[] arr) {
-        mergeSort(arr, 0, arr.length - 1);
+        mergeSort(arr);
     }
 
     /**
      * Metoda mergeSort() odpowiada za rekurencyjne wywołanie sortowania przez scalanie
      * @param arr - tablica int[]
-     * @param left - indeks pierwszego elementu
-     * @param right - indeks ostatniego elementu
      */
-    private void mergeSort(int[] arr, int left, int right) {
+    private void mergeSort(int[] array) {
         if (limit != 0 && recursiveDepth == limit) return;
         recursiveDepth++;
-        if (ascending ? left < right : left > right) {
-            int mid = (left + right) / 2;
-            mergeSort(arr, left, mid);
-            mergeSort(arr, mid + 1, right);
-            merge(arr, left, mid, right);
+
+        int length = array.length;
+        if (length < 2) {
+            return;
         }
+
+        int mid = length / 2;
+        int[] leftArray = new int[mid];
+        int[] rightArray = new int[length - mid];
+
+        System.arraycopy(array, 0, leftArray, 0, mid);
+        System.arraycopy(array, mid, rightArray, 0, length - mid);
+
+        mergeSort(leftArray);
+        mergeSort(rightArray);
+
+        merge(array, leftArray, rightArray);
     }
 
     /**
      * Metoda merge() scala dwie podtablice
-     * @param arr - tablica int[]
-     * @param left - indeks pierwszego elementu
-     * @param mid - indeks środkowego elementu
-     * @param right - indeks ostatniego elementu
+     * @param array - tablica int[]
+     * @param leftArray - lewa podtablica
+     * @param rightArray - prawa podtablica
      */
-    private void merge(int[] arr, int left, int mid, int right) {
-        int n1 = mid - left + 1;
-        int n2 = right - mid;
+    public void merge(int[] array, int[] leftArray, int[] rightArray) {
+        int leftLength = leftArray.length;
+        int rightLength = rightArray.length;
+        int i = 0, j = 0, k = 0;
 
-        int[] leftArr = new int[n1];
-        int[] rightArr = new int[n2];
-
-        for (int i = 0; i < n1; ++i) {
-            leftArr[i] = arr[left + i];
-        }
-        for (int j = 0; j < n2; ++j) {
-            rightArr[j] = arr[mid + 1 + j];
-        }
-
-        int i = 0, j = 0;
-        int k = left;
-        while (i < n1 && j < n2) {
-            if (leftArr[i] <= rightArr[j]) {
-                arr[k] = leftArr[i];
-                i++;
+        while (i < leftLength && j < rightLength) {
+            if (ascending ? leftArray[i] <= rightArray[j] : leftArray[i] >= rightArray[j]) {
+                array[k++] = leftArray[i++];
             } else {
-                arr[k] = rightArr[j];
-                j++;
+                array[k++] = rightArray[j++];
             }
-            k++;
         }
 
-        while (i < n1) {
-            arr[k] = leftArr[i];
-            i++;
-            k++;
+        while (i < leftLength) {
+            array[k++] = leftArray[i++];
         }
 
-        while (j < n2) {
-            arr[k] = rightArr[j];
-            j++;
-            k++;
+        while (j < rightLength) {
+            array[k++] = rightArray[j++];
         }
     }
 
@@ -475,70 +465,60 @@ class MergeSort implements SortingAlgorithm {
      * @param arr - tablica double[]
      */
     public void sort(double[] arr) {
-        mergeSort(arr, 0, arr.length - 1);
+        mergeSort(arr);
     }
 
     /**
      * Metoda mergeSort() odpowiada za rekurencyjne wywołanie sortowania przez scalanie
      * @param arr - tablica double[]
-     * @param left - indeks pierwszego elementu
-     * @param right - indeks ostatniego elementu
      */
-    private void mergeSort(double[] arr, int left, int right) {
+    private void mergeSort(double[] array) {
         if (limit != 0 && recursiveDepth == limit) return;
         recursiveDepth++;
-        if (ascending ? left < right : left > right) {
-            int mid = (left + right) / 2;
-            mergeSort(arr, left, mid);
-            mergeSort(arr, mid + 1, right);
-            merge(arr, left, mid, right);
+
+        int length = array.length;
+        if (length < 2) {
+            return;
         }
+
+        int mid = length / 2;
+        double[] leftArray = new double[mid];
+        double[] rightArray = new double[length - mid];
+
+        System.arraycopy(array, 0, leftArray, 0, mid);
+        System.arraycopy(array, mid, rightArray, 0, length - mid);
+
+        mergeSort(leftArray);
+        mergeSort(rightArray);
+
+        merge(array, leftArray, rightArray);
     }
 
     /**
      * Metoda merge() scala dwie podtablice
-     * @param arr - tablica double[]
-     * @param left - indeks pierwszego elementu
-     * @param mid - indeks środkowego elementu
-     * @param right - indeks ostatniego elementu
+     * @param array - tablica double[]
+     * @param leftArray - lewa podtablica
+     * @param rightArray - prawa podtablica
      */
-    private void merge(double[] arr, int left, int mid, int right) {
-        int n1 = mid - left + 1;
-        int n2 = right - mid;
+    public void merge(double[] array, double[] leftArray, double[] rightArray) {
+        int leftLength = leftArray.length;
+        int rightLength = rightArray.length;
+        int i = 0, j = 0, k = 0;
 
-        double[] leftArr = new double[n1];
-        double[] rightArr = new double[n2];
-
-        for (int i = 0; i < n1; ++i) {
-            leftArr[i] = arr[left + i];
-        }
-        for (int j = 0; j < n2; ++j) {
-            rightArr[j] = arr[mid + 1 + j];
-        }
-
-        int i = 0, j = 0;
-        int k = left;
-        while (i < n1 && j < n2) {
-            if (leftArr[i] <= rightArr[j]) {
-                arr[k] = leftArr[i];
-                i++;
+        while (i < leftLength && j < rightLength) {
+            if (ascending ? leftArray[i] <= rightArray[j] : leftArray[i] >= rightArray[j]) {
+                array[k++] = leftArray[i++];
             } else {
-                arr[k] = rightArr[j];
-                j++;
+                array[k++] = rightArray[j++];
             }
-            k++;
         }
 
-        while (i < n1) {
-            arr[k] = leftArr[i];
-            i++;
-            k++;
+        while (i < leftLength) {
+            array[k++] = leftArray[i++];
         }
 
-        while (j < n2) {
-            arr[k] = rightArr[j];
-            j++;
-            k++;
+        while (j < rightLength) {
+            array[k++] = rightArray[j++];
         }
     }
 
@@ -547,70 +527,60 @@ class MergeSort implements SortingAlgorithm {
      * @param arr - tablica char[]
      */
     public void sort(char[] arr) {
-        mergeSort(arr, 0, arr.length - 1);
+        mergeSort(arr);
     }
 
     /**
      * Metoda mergeSort() odpowiada za rekurencyjne wywołanie sortowania przez scalanie
      * @param arr - tablica char[]
-     * @param left - indeks pierwszego elementu
-     * @param right - indeks ostatniego elementu
      */
-    private void mergeSort(char[] arr, int left, int right) {
+    private void mergeSort(char[] array) {
         if (limit != 0 && recursiveDepth == limit) return;
         recursiveDepth++;
-        if (ascending ? left < right : left > right) {
-            int mid = (left + right) / 2;
-            mergeSort(arr, left, mid);
-            mergeSort(arr, mid + 1, right);
-            merge(arr, left, mid, right);
+
+        int length = array.length;
+        if (length < 2) {
+            return;
         }
+
+        int mid = length / 2;
+        char[] leftArray = new char[mid];
+        char[] rightArray = new char[length - mid];
+
+        System.arraycopy(array, 0, leftArray, 0, mid);
+        System.arraycopy(array, mid, rightArray, 0, length - mid);
+
+        mergeSort(leftArray);
+        mergeSort(rightArray);
+
+        merge(array, leftArray, rightArray);
     }
 
     /**
      * Metoda merge() scala dwie podtablice
-     * @param arr - tablica char[]
-     * @param left - indeks pierwszego elementu
-     * @param mid - indeks środkowego elementu
-     * @param right - indeks ostatniego elementu
+     * @param array - tablica char[]
+     * @param leftArray - lewa podtablica
+     * @param rightArray - prawa podtablica
      */
-    private void merge(char[] arr, int left, int mid, int right) {
-        int n1 = mid - left + 1;
-        int n2 = right - mid;
+    public void merge(char[] array, char[] leftArray, char[] rightArray) {
+        int leftLength = leftArray.length;
+        int rightLength = rightArray.length;
+        int i = 0, j = 0, k = 0;
 
-        char[] leftArr = new char[n1];
-        char[] rightArr = new char[n2];
-
-        for (int i = 0; i < n1; ++i) {
-            leftArr[i] = arr[left + i];
-        }
-        for (int j = 0; j < n2; ++j) {
-            rightArr[j] = arr[mid + 1 + j];
-        }
-
-        int i = 0, j = 0;
-        int k = left;
-        while (i < n1 && j < n2) {
-            if (leftArr[i] <= rightArr[j]) {
-                arr[k] = leftArr[i];
-                i++;
+        while (i < leftLength && j < rightLength) {
+            if (ascending ? leftArray[i] <= rightArray[j] : leftArray[i] >= rightArray[j]) {
+                array[k++] = leftArray[i++];
             } else {
-                arr[k] = rightArr[j];
-                j++;
+                array[k++] = rightArray[j++];
             }
-            k++;
         }
 
-        while (i < n1) {
-            arr[k] = leftArr[i];
-            i++;
-            k++;
+        while (i < leftLength) {
+            array[k++] = leftArray[i++];
         }
 
-        while (j < n2) {
-            arr[k] = rightArr[j];
-            j++;
-            k++;
+        while (j < rightLength) {
+            array[k++] = rightArray[j++];
         }
     }
 }
